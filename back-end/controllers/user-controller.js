@@ -12,7 +12,6 @@ const { handleValidateOwnership, requireToken } = require("../middleware/auth");
 // 	res.status(200).json({message: "user index route"})
 // }); 
 
-
 // USER SHOW ROUTE
 router.get("/", async (req, res) => {
     try {
