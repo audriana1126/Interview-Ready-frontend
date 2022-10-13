@@ -3,9 +3,18 @@
 const cors = require("cors")
 const morgan = require("morgan")
 const methodOverride = require('method-override');
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
+// const port = process.env.PORT || 3000;
 // const session = require("express-session");
 // const MongoStore = require("connect-mongo");
 
+
+server.use(middlewares);
+server.use(router);
+// server.listen(port);
 // import user router
 
 // initialize .env variables
