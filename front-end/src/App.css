@@ -75,3 +75,6 @@ to{
   transform: rotateZ(360deg);
 }
 }
+.careerButtons {
+  margin: 50px;
+}

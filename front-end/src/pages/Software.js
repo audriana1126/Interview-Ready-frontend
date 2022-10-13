@@ -1,8 +1,3 @@
-import React from 'react';
-import Auth from '../components/Auth'
-import {Link} from 'react-router-dom'
-
-
 function Career () {
 
     return (
@@ -31,13 +26,3 @@ function Career () {
             </div>
         </Auth>
   )}
-
-  export default Career
-
-
-
-
-
-
-
-

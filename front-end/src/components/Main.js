@@ -10,7 +10,7 @@ const Main = (props) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/career" element={<Career />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/career/chat" element={<Chat />} />
          <Route path="/login" element={<LoginForm />} />
           
         </Routes>
