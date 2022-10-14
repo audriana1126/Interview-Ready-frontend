@@ -17,17 +17,7 @@ const RegisterForm = ({signUp}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const createdUserToken = await signUp(input)
 
-
-
-  //   if (createdUserToken) {
-  //     navigate("/login")
-  //   } else {
-  //     navigate("/login")
-  //   }
-	// 	setInput(initialState);
-  // };
 
 
   const url = 'https://interview-ready.herokuapp.com/auth/register'
@@ -49,7 +39,17 @@ const RegisterForm = ({signUp}) => {
 
   setuserState(initialState);
   };
+    // const createdUserToken = await signUp(input)
 
+
+
+  //   if (createdUserToken) {
+  //     navigate("/login")
+  //   } else {
+  //     navigate("/login")
+  //   }
+	// 	setInput(initialState);
+  // };
   return (
     <form onSubmit={handleSubmit}>
       

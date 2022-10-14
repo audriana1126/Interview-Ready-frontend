@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import React from 'react';
 import {useNavigate} from 'react-router-dom'
+// import Main from '../components/Main';
 
 function LoginForm() {
+
   const initialState = { username: '', password: '' };
   const [formState, setFormState] = useState(initialState);
   const navigate = useNavigate()
@@ -23,6 +25,7 @@ function LoginForm() {
     event.preventDefault();
     // do something with the data in the component state
     console.log(formState);
+
 
     // Delete this afterwards
       // const url = 'https://interview-ready.herokuapp.com/user'

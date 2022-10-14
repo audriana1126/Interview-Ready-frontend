@@ -2,18 +2,29 @@ import React, {useEffect, useState} from 'react';
 import Auth from '../components/Auth'
 import {useNavigate} from 'react-router-dom'
 import UserProfile from '../components/UserProfile';
+import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 
 function Profile () {
     const [userProfile, setUserProfile] = useState(null)
     const navigate = useNavigate()
 
     const logout = () => {
-        localStorage.removeItem('token')
+        // localStorage.removeItem('token')
+        clearUserToken()
 
         //redirecting user to login
         //navigate('login')
         window.location.reload()
     }
+
+    const update = () => {
+        // setUserToken()
+        navigate("/user/:id")
+        
+    }
+
+
+
 
     useEffect(()=>{
         const tokenData = localStorage.getItem('token')
@@ -55,6 +66,7 @@ function Profile () {
                 <div>
                     <UserProfile data={userProfile} />
                 </div>
+                <button onClick={update}>Update</button>
             </div>
         </Auth>
     )}
