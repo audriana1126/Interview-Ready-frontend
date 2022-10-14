@@ -1,10 +1,20 @@
 import React from 'react';
+import { Routes, Route } from "react-router-dom"
+import LoginForm from './LoginForm';
+import { Link } from "react-router-dom";
+import RegisterForm from './RegisterForm';
 
 function Home () {
 
     return (
         <div>
-            <h1>This is Home</h1>
+        
+          <Link to="/login" element={<LoginForm />} >
+          <h1> Login</h1> 
+          </Link>
+          <Link to="/register" element={<RegisterForm />} >
+          <h1> Register</h1> 
+          </Link>
 
         </div>
   )}

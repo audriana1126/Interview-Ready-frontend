@@ -24,12 +24,44 @@ function LoginForm() {
     // do something with the data in the component state
     console.log(formState);
 
-    setTimeout(() => {
-      localStorage.setItem('token', 'set-user-token')
+    // Delete this afterwards
+      // const url = 'https://interview-ready.herokuapp.com/user'
+      // fetch(url)
+      // .then(res=>res.json())
+      // .then(res=>{
+      //   if(res){
+      //     const result = res.find(item=>item.id === '6344a575b8981dae2c48ae9c')
+      //     //console.log('result',result)
+      //     localStorage.setItem('token', JSON.stringify(result))
+      //     navigate('/profile')
+      //   }
+      // })
+      // .catch(err=>console.log(err))
+    // End of Delete this afterwards
 
-      //redirect to chat
-      navigate('/career')
-    }, 1000)
+    const url = 'https://interview-ready.herokuapp.com/auth/login'
+    const context = {
+      headers: {
+        "Content-type": 'Application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(formState)
+    }
+    fetch(url, context)
+    .then(response=>response.json())
+    .then(response=>{
+      console.log('back-end response',response)
+      localStorage.setItem('token', JSON.stringify(response))
+      navigate('/profile')
+    })
+    .catch(err=>console.log(err))
+
+    // setTimeout(() => {
+    //   localStorage.setItem('token', 'set-user-token')
+
+    //   //redirect to chat
+    //   navigate('/career')
+    // }, 1000)
 
     // clear the form
     setuserState(initialState);

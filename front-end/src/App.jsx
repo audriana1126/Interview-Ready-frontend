@@ -4,6 +4,9 @@ import Main from './components/Main';
 import { Link } from 'react-router-dom';
 import {setUserToken, clearUserToken} from './utils/authToken.js';
 import {useState, useEffect} from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 function App() {

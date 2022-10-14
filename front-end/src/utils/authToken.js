@@ -4,11 +4,11 @@ const getUserToken = () => {
 }
 
 const setUserToken = (token) => {
-    return localStorage.setItem('token', token)
+  localStorage.setItem('token', token)
 }
 
 const clearUserToken = () => {
-  return localStorage.setItem('token', "")
+  localStorage.removeItem('token')
 }
 
 export {getUserToken,setUserToken, clearUserToken}
