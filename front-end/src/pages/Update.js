@@ -10,8 +10,8 @@ const Update = (props) => {
     const [user, setUser] = useState(null)
     const { id } = useParams()
     const navigate = useNavigate()
-    const URL = `https://interview-ready.herokuapp.com/user/${user._id}`
-
+    const URL = `https://interview-ready.herokuapp.com/user/${id}`
+// console.log('hello')
     const getUser = async () => {
         console.log(URL)
         // test your endpoint before making a request
@@ -108,7 +108,7 @@ const Update = (props) => {
     // console.log(`Current User: ${JSON.stringify(User)}`)
 
     return <section>
-
+        <h1>Update</h1>
         {editForm ?
         <EditForm
             handleChange={handleChange}

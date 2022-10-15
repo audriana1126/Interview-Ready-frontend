@@ -19,7 +19,7 @@ function Main() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<RegisterForm />} />
-      <Route path="/user/:id" element={<Update />} />
+      <Route path="/update" element={<Update />} />
       
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<LoginForm />} /> 

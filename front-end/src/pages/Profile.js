@@ -3,6 +3,8 @@ import Auth from '../components/Auth'
 import {useNavigate} from 'react-router-dom'
 import UserProfile from '../components/UserProfile';
 import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
+import { Link } from 'react-router-dom';
+
 
 function Profile () {
     const [userProfile, setUserProfile] = useState(null)
@@ -19,7 +21,7 @@ function Profile () {
 
     const update = () => {
         // setUserToken()
-        navigate("/user/:id")
+        // navigate("/user/:id")
         
     }
 
@@ -66,7 +68,9 @@ function Profile () {
                 <div>
                     <UserProfile data={userProfile} />
                 </div>
-                <button onClick={update}>Update</button>
+                <Link to="/update">
+                    <a>Update</a>
+                </Link>
             </div>
         </Auth>
     )}
