@@ -73,21 +73,36 @@ function LoginForm() {
   // Note that we need to use `htmlFor` instead of `for` in JSX
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input
-        id="username"
-        type="text"
-        onChange={handleChange}
-        value={formState.username}
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        id="password"
-        type="password"
-        onChange={handleChange}
-        value={formState.password}
-      />
-      <button type="submit">Login</button>
+      
+      <h1 className="Login">Login</h1>
+
+      {/* <label className='loginLabel' htmlFor="username">Username:</label> */}
+      <div className='container'>
+        <div className='container2'>
+          <input
+            className="loginInput"
+            id="loginUsername"
+            placeholder='Username'
+            type="text"
+            onChange={handleChange}
+            value={formState.username}
+            />
+        </div>
+      {/* <label className='loginLabel' htmlFor="password">Password:</label> */}
+      <div className='container2'>
+          <input
+            className="loginInput"
+            id="loginPassword"
+            placeholder='Password'
+            type="password"
+            onChange={handleChange}
+            value={formState.password}
+            />
+      </div>
+      </div>
+      <div className='container'>
+          <button className='loginSubmit' type="submit">Login</button>
+      </div>
     </form>
   );
 }

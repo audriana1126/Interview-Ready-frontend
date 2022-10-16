@@ -1,5 +1,5 @@
 import EditForm from '../components/EditForm'
-
+import Auth from '../components/Auth'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 // const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
@@ -97,7 +97,7 @@ const Update = (props) => {
         > options - method (delete)
         (assuming delete is a success)
         > redirect to homepage (useNavigate)
-    3. add onClick to the button 
+    3. add onClick to the button r
     */
 
 
@@ -107,27 +107,67 @@ const Update = (props) => {
 
     // console.log(`Current User: ${JSON.stringify(User)}`)
 
-    return <section>
-        <h1>Update</h1>
-        {editForm ?
-        <EditForm
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            userData={editForm}
-            val={`Edit ${user.name}`}
-        /> : null}
+    return (
+    <Auth>
+        <section>
+        
+            {editForm ?
+            <EditForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                userData={editForm}
+                val={`Edit ${user.name}`}
+                /> : null}
+            <div>
+                <h1 class="editAccount">Edit Your Account</h1>
+            </div>
+                <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+            <div>
+                <label className='updateLabel' for="name"> Name</label>
+                <input
+                className="updateInput"
+                type="text"
+                placeholder="Name"
+                name="name"
+                id="name"
+                />
+            </div>
+            <div>
+                
+                <input
+                className="updateInput"
+                type="text" 
+                placeholder="username" 
+                name="username" 
+                id="updateUsername" />
+            </div>
+            <div>
+                
+                <input
+                className="updateInput"
+                type="text"
+                placeholder="your@email.com"
+                name="email"
+                id="updateEmail"
+                />
+            </div>
+          
+                </form>
+        {/* {user ? loaded() : loading()} */}
+            <div className='updateButton'>
+                <button class="button is-info">Edit User</button>
+            </div>
+            <br /> 
+            <div className="updateButton">
+                <Link to="/">Back Home</Link>
+            </div>
+            <br />
+            <div className='updateButton'>
+                <button onClick={removeUser}>Delete User</button>
+            </div>
+        </section>
+    </Auth>    
 
-        {user ? loaded() : loading()}
-
-        <div className="button-wrapper">
-            <Link to="/">Back Home</Link>
-            <button 
-            onClick={removeUser}
-            >
-                Delete User
-            </button>
-        </div>
-    </section>
-}
+)}
 
 export default Update

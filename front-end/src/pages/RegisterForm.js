@@ -3,6 +3,7 @@ import { useState } from 'react';
 import React from 'react';
 
 const RegisterForm = ({signUp}) => {
+    
   const initialState = { name: "", username: "", password: "", email: ""};
   const [input, setInput] = useState(initialState);
 	const navigate = useNavigate()
@@ -74,6 +75,7 @@ const RegisterForm = ({signUp}) => {
         <br />
         <br />
         <button type="submit" > Register</button>
+        <button type="submit" > Back to Login</button>
     </form>
     
   );

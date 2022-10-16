@@ -38,9 +38,9 @@
 }
 
 
-*{
+/* *{
   box-sizing: border-box;
-}
+} */
 
 .nav{
   display: flex;
@@ -77,4 +77,132 @@ to{
 }
 .careerButtons {
   margin: 50px;
+}
+.HPlink {
+  text-shadow: 1px -1px 0 #ffffff;
+  color: White;
+  text-decoration: none;
+  position: relative;
+  top: 200px;
+  right: 400px;
+  font-size: 30px;
+  
+}
+
+a:hover {
+    color: peachpuff;
+
+}
+
+.homePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  
+  background-image: url("https://i.imgur.com/DzkQX2e.png");
+  background-size: cover;
+  
+  margin: 90px;
+  padding: 60px;
+  background-repeat: no-repeat;
+  box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+
+
+  /* background-image: url("https://i.imgur.com/t9uNqKo.png");
+  margin: auto;
+  background-size:cover; */
+  /* width: 800px; */
+  /* height: 700px */
+  /* border: 2px solid; */
+  /* background-repeat: no-repeat, repeat; */
+  
+}
+
+.Login {
+  position: relative;
+  top: 70px;
+  font-size: 50px;
+}
+
+.loginInput {
+  position: relative;
+  top: 70px;
+  padding: 20px;
+  margin: 40px;
+  width: 250px;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.loginInput::placeholder {
+
+  font-size: 25px; 
+  display: flex;
+  align-items: flex-start;
+}
+
+.container2 {
+  display: inline-block;
+  
+}
+
+.loginSubmit {
+  font-size: 20px;;
+  position: relative;
+  top: 70px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.editAccount {
+  position: relative;
+  top: 70px;
+  font-size: 50px;
+}
+
+
+
+.updateInput {
+  position: relative;
+  top: 70px;
+  padding: 20px;
+  margin: 40px;
+  width: 250px;
+  border-radius: 15px 15px 15px 15px;
+  /* flex-direction: column; */
+}
+
+.updateInput::placeholder {
+
+    font-size: 25px; 
+    display: flex;
+    align-items: flex-start;
+}
+
+#updateUsername {
+  position: relative;
+  right: 20px;
+}
+
+.updateButton {
+  position: relative;
+  top: 70px;
+  display: inline-block;
+}
+
+
+
+@media (min-width: 3100px) {
+  .homePage {
+    height: 1400px;
+    background-size: cover;
+
+  }
+  .footer {
+      font-size: 15px;
+  }
+  .nav {
+      font-size: 20px;
+  }
+
 }
