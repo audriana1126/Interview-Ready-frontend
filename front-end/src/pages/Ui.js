@@ -4,14 +4,14 @@ import {useNavigate} from 'react-router-dom'
 import io from 'socket.io-client'
 import endpoint from '../utils/endpoint'
 
-function Chat () {
+function Ui () {
   
   // client-side
     const socket = io(endpoint.uri)
     const [msg, setMsg] = useState('')
     const [typing, setTyping] = useState('')
     const [username, setUsername] = useState('')
-    const [messages, setMessages] = useState([{name: "Unknown", msg: 'Hello world'}])
+    const [messages, setMessages] = useState([])
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -35,16 +35,16 @@ function Chat () {
     }
 
     const sendMsg = () => {
-        socket.emit('message', {name: username, msg})
+        socket.emit('ui-message', {name: username, msg})
         console.log('message sent')
     }
 
     socket.on('typing-response', (name)=>{
         let typing = `${name} is typing`
-        setTyping(typing)
+        //setTyping(typing)
     })
 
-    socket.on('display-mesage', (msgObj)=>{
+    socket.on('ui-display-message', (msgObj)=>{
         const msgArr = [...messages, msgObj]
         setMessages(msgArr)
     })
@@ -61,7 +61,9 @@ function Chat () {
     return (
         <Auth navigate={navigate}>
             <div> 
-                <h1>This is Chat</h1>
+                <h1>This is Ui</h1>
+                <div>{messageDisplay}</div>
+                <br /><br />
                 <div>{typing}</div>
                 <input
                   name="name"
@@ -73,9 +75,8 @@ function Chat () {
                 <button onClick={sendMsg}>Send</button>
                 <br /><br />
 
-                <div>{messageDisplay}</div>
             </div>
         </Auth>
     )}
 
-  export default Chat
+  export default Ui

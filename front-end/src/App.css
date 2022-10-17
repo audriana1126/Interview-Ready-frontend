@@ -145,12 +145,11 @@ a:hover {
   align-items: flex-start;
 }
 
-.container2 {
-  
+input {
   display: inline-block;
   position: relative;
   top: 200px;
-  padding: 20px;
+  padding: 40px;
   margin: 40px;
   width: 250px;
   border-radius: 15px 15px 15px 15px;
@@ -296,6 +295,11 @@ a:hover {
   
   margin: 10px;
   border-radius: 5px 5px 5px 5px;
+}
+
+.userProfileComponent {
+  position: relative;
+  top: 100px;
 }
 
 @media (min-width: 3100px) {

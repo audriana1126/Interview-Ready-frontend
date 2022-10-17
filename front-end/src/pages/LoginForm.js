@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import React from 'react';
 import {useNavigate} from 'react-router-dom'
+import endpoint from '../utils/endpoint';
 // import Main from '../components/Main';
 
 function LoginForm() {
-
+  const [user, setUser] = useState('')
+  const [pass, setPass] = useState('')
   const initialState = { username: '', password: '' };
-  const [formState, setformState] = useState(initialState);
+  const [formState, setformState] = useState({ username: '', password: '' });
   const navigate = useNavigate()
-  // const [errMsg, setErrMsg] = useState('')
-  console.log(formState)
+  const [errMsg, setErrMsg] = useState('')
+  // console.log(formState)
 
   const [userState, setuserState] = useState(initialState);
 
   const handleChange = (event) => {
-    setformState({ ...formState, [event.target.id]: event.target.value });
+    setformState({ ...formState, [event.target.name]: event.target.value });
   };
 
   const logout = () => {
@@ -26,7 +28,7 @@ function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // do something with the data in the component state
-    console.log(formState);
+    // console.log(formState);
 
 
     // Delete this afterwards
@@ -44,29 +46,30 @@ function LoginForm() {
       // .catch(err=>console.log(err))
     // End of Delete this afterwards
 
-    const url = 'https://interview-ready.herokuapp.com/auth/login'
+    const url = `${endpoint.uri}auth/login`
     const context = {
       headers: {
         "Content-Type": 'Application/json'
       },
       method: "POST",
-      body: JSON.stringify(formState)
+      body: JSON.stringify({username: user, password: pass})
     }
     fetch(url, context)
     .then(response=>response.json())
     .then(response=>{
-      console.log('back-end response',response)
-      localStorage.setItem('token', JSON.stringify(response))
-      navigate('/profile')
+      // console.log('back-end response',response)
+      // localStorage.setItem('token', JSON.stringify(response))
+      //navigate('/profile')
 
-      // if(response.isLoggedIn){
-      //   localStorage.setItem('token', JSON.stringify(response.token))
-      //   localStorage.setItem('name', JSON.stringify(response.user.name))
-      //   navigate('/profile')
-      // }else{
-      //   setErrMsg(response.error)
-      //   setTimeout(()=>setErrMsg(''), 3000)
-      // }
+      if(response.isLoggedIn){
+        console.log(response)
+        localStorage.setItem('token', response.token)
+        localStorage.setItem('user', JSON.stringify(response.user))
+        navigate('/chat')
+      }else{
+        setErrMsg(response.error)
+        setTimeout(()=>setErrMsg(''), 3000)
+      }
       
     })
     .catch(err=>console.log(err))
@@ -94,18 +97,20 @@ function LoginForm() {
       <div  className='container'>
           <div className='container2'>
           <input
-            
+            name="username"
             type="text"
+            value={user}
             placeholder='Username'
-            onChange={handleChange}
+            onChange={(e)=>setUser(e.target.value)}
             // value={formState.username}
           />
           </div>
       {/* <label className='loginLabel' htmlFor="password">Password:</label> */}
-      <div className='container2'>
+          <div className='container2'>
           <input
-            onChange={handleChange}
-            value={formState.password}
+            name="password"
+            onChange={(e)=>setPass(e.target.value)}
+            value={pass}
             id="password"
             type="password"
             className="password"

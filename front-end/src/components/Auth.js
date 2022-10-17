@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+//import {useNavigate} from 'react-router-dom'
 
 
-export default function Auth({children}) {
-    const navigate = useNavigate()
+export default function Auth({children, navigate}) {
+    //const navigate = useNavigate()
 
     useEffect(()=>{
         const local = localStorage.getItem('token')

@@ -18,7 +18,7 @@ const RegisterForm = ({signUp}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
 
 
   const url = 'https://interview-ready.herokuapp.com/auth/register'
@@ -61,8 +61,6 @@ const RegisterForm = ({signUp}) => {
         <div className='Rcontainer1'>
         <div className='Rcontainer2'>
         <input
-          className="registerInput"
-          id="RegisterUsername"
           type="text"
           onChange={handleChange}
           value={input.username}
@@ -71,10 +69,10 @@ const RegisterForm = ({signUp}) => {
         <br />
         
         {/* <label htmlFor="password">Password: </label> */}
-        <div className='Rcontainer2'>
+        <div id="registerPassword" className='Rcontainer2'>
         <input
-          className="registerInput"
-          id="registerPassword"
+          
+          type="password"
           name="password"
           onChange={handleChange}
           value={input.password}

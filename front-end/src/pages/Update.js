@@ -2,6 +2,7 @@ import EditForm from '../components/EditForm'
 import Auth from '../components/Auth'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import endpoint from '../utils/endpoint'
 import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 // const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
 
@@ -11,22 +12,22 @@ const Update = (props) => {
     const [user, setUser] = useState(null)
     const { id } = useParams()
     const navigate = useNavigate()
-    const URL = `https://interview-ready.herokuapp.com/user/${id}`
+    const URL = `${endpoint}user/${id}`
 // console.log('hello')
-    const getUser = async () => {
-        console.log(URL)
-        // test your endpoint before making a request
-        try {
+    // const getUser = async () => {
+    //     console.log(URL)
+    //     // test your endpoint before making a request
+    //     try {
 
-            const response = await fetch(URL)
-            const userData = await response.json()
-            // console.log(userData)
-            setUser(userData)
-            setEditForm(userData)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    //         const response = await fetch(URL)
+    //         const userData = await response.json()
+    //         // console.log(userData)
+    //         setUser(userData)
+    //         setEditForm(userData)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
     const loaded = () => {
         return (
             <div className="User">
@@ -74,6 +75,7 @@ const Update = (props) => {
     }
 
     const EditUser = () => {
+        localStorage.setItem('user', user)
         setUserToken()
         navigate("/profile")
         
@@ -111,26 +113,36 @@ const Update = (props) => {
 
 
     useEffect(() => {
-        getUser()
+        //getUser()
+        let userData = localStorage.getItem('user')
+        userData = userData ? JSON.parse(userData) : null
+
+        if(userData){
+            setUser(userData)
+        }
     }, [])
 
     // console.log(`Current User: ${JSON.stringify(User)}`)
+
+    const onChange = (e) => {
+        setUser({...user, [e.target.name]: e.target.value })
+    }
 
     return (
     <Auth>
         <section className='updateSection'>
         
-            {editForm ?
+            {/* {editForm ?
             <EditForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 userData={editForm}
                 val={`Edit ${user.name}`}
-                /> : null}
+                /> : null} */}
             <div>
-                <h1 class="editAccount">Edit Your Account</h1>
+                <h1 className="editAccount">Edit Your Account</h1>
             </div>
-                <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+                <form action="" method="POST">
             <div>
                 
                 <input
@@ -139,6 +151,8 @@ const Update = (props) => {
                 placeholder="Name"
                 name="name"
                 id="name"
+                value={user?.name ?? ''}
+                onChange={(e)=>onChange(e)}
                 />
             </div>
             <div>
@@ -147,7 +161,9 @@ const Update = (props) => {
                 className="updateInput"
                 type="text" 
                 placeholder="username" 
-                name="username" 
+                name="username"
+                value={user?.username ?? ''} 
+                onChange={(e)=>onChange(e)}
                 id="updateUsername" />
             </div>
             <div>
@@ -157,6 +173,8 @@ const Update = (props) => {
                 type="text"
                 placeholder="your@email.com"
                 name="email"
+                value={user?.email ?? ""}
+                onChange={(e)=>onChange(e)}
                 id="updateEmail"
                 />
             </div>
@@ -164,12 +182,12 @@ const Update = (props) => {
                 </form>
         {/* {user ? loaded() : loading()} */}
             <div className='updateButton'>
-                <button class="button is-info" onClick={EditUser}>Edit User</button>
+                <button className="button is-info" onClick={EditUser}>Edit User</button>
             </div>
             <br /> 
             <div className="updateButton">
             <button 
-            onclick="window.location.href = 'localhost:3000';">Back
+            onClick={()=>navigate('/profile')}>Back
             </button>
         {/* <Link to="/">Back Home</Link> */}
             </div>

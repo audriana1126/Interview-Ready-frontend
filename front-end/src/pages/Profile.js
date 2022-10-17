@@ -25,15 +25,16 @@ function Profile () {
         
     // }
 
-    
+
 
 
 
 
     useEffect(()=>{
         const tokenData = localStorage.getItem('token')
-        if(tokenData){
-            const {user} = JSON.parse(tokenData)
+        const userData = localStorage.getItem('user')
+        if(userData){
+            const user = JSON.parse(userData)
             setUserProfile(user)
         }
         // const url = "https://interview-ready.herokuapp.com/user"
@@ -61,7 +62,7 @@ function Profile () {
     //     </React.Fragment>
     // ))
     return (
-        <Auth>
+        <Auth navigate={navigate}>
             <section className='profileSection'> 
                 <h1 className='profileH1'>This is Profile</h1>
                 <br />
@@ -69,10 +70,10 @@ function Profile () {
                     <UserProfile data={userProfile} />
                 </div>
                 <Link className='profileButton' to="/update">
-                    <a>Update</a>
+                    Update
                 </Link>
                 <br />
-                <button class="profileButton" onClick={logout}>Logout</button>
+                <button className="profileButton" onClick={logout}>Logout</button>
             </section>
         </Auth>
     )}
