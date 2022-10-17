@@ -87,7 +87,7 @@ const RegisterForm = ({signUp}) => {
     </form>
   </section>  
   );
-}
+} 
    
 export default RegisterForm;
 
