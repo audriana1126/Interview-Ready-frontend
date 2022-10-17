@@ -13,6 +13,7 @@ function Profile () {
     const logout = () => {
         // localStorage.removeItem('token')
         clearUserToken()
+        localStorage.removeItem('user')
 
         //redirecting user to login
         //navigate('login')

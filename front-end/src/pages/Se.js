@@ -17,11 +17,13 @@ function Se () {
     const styles = {
         sender: {
             display: "flex",
-            flexDirection: "row-reverse"
+            flexDirection: "row-reverse",
+            marginBottom: "10px"
         },
         receiver: {
             display: "flex",
             flexDirection: "row",
+            marginBottom: "10px"
         },
         chatR: {
             maxWidth: "50%",
@@ -38,16 +40,16 @@ function Se () {
             padding: "10px"
         },
         input: {
-            width: "100%",
+            width: "10%",
             padding: "10px 15px"
         }
     }
 
     useEffect(()=>{
-        let user = localStorage.getItem('name')
-        user = user ?? "Unknown"
+        let user = localStorage.getItem('user')
+        user = JSON.parse(user) ?? "Unknown"
         console.log('User', user)
-        setUsername(user)
+        setUsername(user.name)
     }, [])
     
     const logout = () => {
@@ -84,7 +86,7 @@ function Se () {
         <React.Fragment key={index}>
             <div style={name===username ? styles.sender : styles.receiver}>
                 <div style={name===username ? styles.chatS : styles.chatR}>   
-                    <div>{name}</div>
+                    <div style={{fontSize: "10px"}}>{name}</div>
                     <div>{msg}</div>
                 </div>
             </div>
@@ -94,7 +96,8 @@ function Se () {
     return (
         <Auth navigate={navigate}>
             <div style={{width: '100%'}}> 
-                <h1 style={{textAlign: "center"}}>This is Se</h1>
+                <h1 style={{textAlign: "center", fontSize: "20px",}}>You've entered a chat room</h1>
+                <button onClick={()=>navigate("/career")}>Leave</button>
                 <div>{messageDisplay}</div>
                 {/* <div>
                     <div style={{width: "100%", backgroundColor: "blue"}}>
@@ -103,13 +106,14 @@ function Se () {
                 </div> */}
                 <br /><br />
                 <div>{typing}</div>
-                <div style={{width: "100%", padding: "10px"}}>
+                <div style={{ padding: "10px"}}>
                     <input
                     name="name"
                     type="text"
                     value={msg}
                     onChange={(e)=>onChange(e.target.value)}
-                    style={styles.input}
+                    className="input"
+                    // style={styles.input}
                     />
                 </div>
                 {/* <button onClick={logout}>Logout</button> */}

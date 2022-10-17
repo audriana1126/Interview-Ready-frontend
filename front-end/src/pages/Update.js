@@ -88,8 +88,12 @@ const Update = (props) => {
         fetch(`${endpoint.url}user/${user.id}`, context)
         .then(res=>res.json())
         .then(res=>{
-            console.log('Edit response from backend', res)
+            if (res){
+                navigate('/profile')
+            }
+            //console.log('Edit response from backend', res)
         })
+        .catch(err=>console.log(err))
         
     }
 

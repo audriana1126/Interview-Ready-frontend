@@ -28,9 +28,8 @@ function Career () {
             <div className="Career">
             
                 <h1 className='careerH1'>Choose Your Career</h1>
-                
-                <div className="careerButtons">
-                <Link to='./Software'>Go to chat</Link>   
+                <button onClick={()=>navigate('/profile')}>Profile</button>
+                <div className="careerButtons"> 
                 <button onClick={se}>Software Engineer</button>
                 </div>
                 <div className="careerButtons">
@@ -43,7 +42,7 @@ function Career () {
                 </div>
                 <br />
                 <div className="careerButtons">
-                <Link to='./chat'>Go to chat</Link>
+                
                 </div>
             </div>
         </Auth>

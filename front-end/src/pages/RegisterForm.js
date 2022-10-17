@@ -62,6 +62,7 @@ const RegisterForm = ({signUp}) => {
         <div className='Rcontainer2'>
         <input
           type="text"
+          placeholder='Username'
           onChange={handleChange}
           value={input.username}
         />
@@ -71,8 +72,8 @@ const RegisterForm = ({signUp}) => {
         {/* <label htmlFor="password">Password: </label> */}
         <div id="registerPassword" className='Rcontainer2'>
         <input
-          
           type="password"
+          placeholder="Password"
           name="password"
           onChange={handleChange}
           value={input.password}
