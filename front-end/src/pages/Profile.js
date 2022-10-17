@@ -19,11 +19,13 @@ function Profile () {
         window.location.reload()
     }
 
-    const update = () => {
-        // setUserToken()
-        // navigate("/user/:id")
+    // const update = () => {
+    //     // setUserToken()
+    //     // navigate("/user/:id")
         
-    }
+    // }
+
+    
 
 
 
@@ -60,18 +62,18 @@ function Profile () {
     // ))
     return (
         <Auth>
-            <div> 
-                <h1>This is Profile</h1>
-                <button onClick={logout}>Logout</button>
-
+            <section className='profileSection'> 
+                <h1 className='profileH1'>This is Profile</h1>
                 <br />
                 <div>
                     <UserProfile data={userProfile} />
                 </div>
-                <Link to="/update">
+                <Link className='profileButton' to="/update">
                     <a>Update</a>
                 </Link>
-            </div>
+                <br />
+                <button class="profileButton" onClick={logout}>Logout</button>
+            </section>
         </Auth>
     )}
 

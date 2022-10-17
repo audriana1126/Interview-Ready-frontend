@@ -2,6 +2,7 @@ import EditForm from '../components/EditForm'
 import Auth from '../components/Auth'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 // const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
 
 
@@ -72,21 +73,29 @@ const Update = (props) => {
         // we can reference our other handleSubmit (user) 
     }
 
+    const EditUser = () => {
+        setUserToken()
+        navigate("/profile")
+        
+    }
+
     const removeUser = async () => {
         try {
 
             const options = { method: 'DELETE' }
             const URL = `https://interview-ready.herokuapp.com/user/${user._id}`
+            // 
             console.log(URL)
 
             const response = await fetch(URL, options)
             const deletedUser = await response.json()
             // our destroy - findByIdAndDelete >> original document
             console.log(deletedUser)
-            navigate('/')
+            // navigate('/')
         } catch (err) {
             console.log(err)
-            navigate(`https://interview-ready.herokuapp.com/user/`)
+            navigate(`localhost:3000/`)
+            // https://interview-ready.herokuapp.com/user/
         }
     }
     /* How to delete a resource from the Update page:
@@ -109,7 +118,7 @@ const Update = (props) => {
 
     return (
     <Auth>
-        <section>
+        <section className='updateSection'>
         
             {editForm ?
             <EditForm
@@ -123,7 +132,7 @@ const Update = (props) => {
             </div>
                 <form action="/user/<%=user._id%>?_method=PUT" method="POST">
             <div>
-                <label className='updateLabel' for="name"> Name</label>
+                
                 <input
                 className="updateInput"
                 type="text"
@@ -155,11 +164,14 @@ const Update = (props) => {
                 </form>
         {/* {user ? loaded() : loading()} */}
             <div className='updateButton'>
-                <button class="button is-info">Edit User</button>
+                <button class="button is-info" onClick={EditUser}>Edit User</button>
             </div>
             <br /> 
             <div className="updateButton">
-                <Link to="/">Back Home</Link>
+            <button 
+            onclick="window.location.href = 'localhost:3000';">Back
+            </button>
+        {/* <Link to="/">Back Home</Link> */}
             </div>
             <br />
             <div className='updateButton'>

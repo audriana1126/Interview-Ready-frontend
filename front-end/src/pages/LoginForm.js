@@ -6,13 +6,15 @@ import {useNavigate} from 'react-router-dom'
 function LoginForm() {
 
   const initialState = { username: '', password: '' };
-  const [formState, setFormState] = useState(initialState);
+  const [formState, setformState] = useState(initialState);
   const navigate = useNavigate()
+  // const [errMsg, setErrMsg] = useState('')
+  console.log(formState)
 
   const [userState, setuserState] = useState(initialState);
 
   const handleChange = (event) => {
-    setFormState({ ...formState, [event.target.id]: event.target.value });
+    setformState({ ...formState, [event.target.id]: event.target.value });
   };
 
   const logout = () => {
@@ -45,7 +47,7 @@ function LoginForm() {
     const url = 'https://interview-ready.herokuapp.com/auth/login'
     const context = {
       headers: {
-        "Content-type": 'Application/json'
+        "Content-Type": 'Application/json'
       },
       method: "POST",
       body: JSON.stringify(formState)
@@ -56,6 +58,16 @@ function LoginForm() {
       console.log('back-end response',response)
       localStorage.setItem('token', JSON.stringify(response))
       navigate('/profile')
+
+      // if(response.isLoggedIn){
+      //   localStorage.setItem('token', JSON.stringify(response.token))
+      //   localStorage.setItem('name', JSON.stringify(response.user.name))
+      //   navigate('/profile')
+      // }else{
+      //   setErrMsg(response.error)
+      //   setTimeout(()=>setErrMsg(''), 3000)
+      // }
+      
     })
     .catch(err=>console.log(err))
 
@@ -72,38 +84,41 @@ function LoginForm() {
   };
   // Note that we need to use `htmlFor` instead of `for` in JSX
   return (
-    <form onSubmit={handleSubmit}>
-      
-      <h1 className="Login">Login</h1>
+      <section className='loginSection'>
+        <form onSubmit={handleSubmit}>
+            
+            
+        <h1 className="Login">Login</h1>
 
       {/* <label className='loginLabel' htmlFor="username">Username:</label> */}
-      <div className='container'>
-        <div className='container2'>
+      <div  className='container'>
+          <div className='container2'>
           <input
-            className="loginInput"
-            id="loginUsername"
-            placeholder='Username'
+            
             type="text"
+            placeholder='Username'
             onChange={handleChange}
-            value={formState.username}
-            />
-        </div>
+            // value={formState.username}
+          />
+          </div>
       {/* <label className='loginLabel' htmlFor="password">Password:</label> */}
       <div className='container2'>
           <input
-            className="loginInput"
-            id="loginPassword"
-            placeholder='Password'
-            type="password"
             onChange={handleChange}
             value={formState.password}
-            />
+            id="password"
+            type="password"
+            className="password"
+            placeholder='password'
+          />
       </div>
+      {/* <div style={{color: 'white', fontSize: '20px'}}>{errMsg}</div> */}
       </div>
       <div className='container'>
           <button className='loginSubmit' type="submit">Login</button>
       </div>
-    </form>
+      </form>
+      </section>
   );
 }
 export default LoginForm;

@@ -6,9 +6,11 @@ export default function UserProfile({data}) {
     }
   return (
     <div>
-        <div>Username: {data.username}</div>
-        <div>Email: {data.email}</div>
-        <div>Name: {data.name}</div>
+        <div className='profileInfo'>Username: {data.username}</div>
+        <br />
+        <div className='profileInfo'>Email: {data.email}</div>
+        <br />
+        <div className='profileInfo'>Name: {data.name}</div>
     </div>
   )
 }

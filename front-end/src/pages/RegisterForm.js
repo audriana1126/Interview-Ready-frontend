@@ -18,7 +18,7 @@ const RegisterForm = ({signUp}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
 
 
   const url = 'https://interview-ready.herokuapp.com/auth/register'
@@ -52,32 +52,41 @@ const RegisterForm = ({signUp}) => {
 	// 	setInput(initialState);
   // };
   return (
-    <form onSubmit={handleSubmit}>
+    <section className='registerSection'>
+      <form onSubmit={handleSubmit}>
+
+        <h1 className='registerH1' >Register now!</h1>
       
-      
-        <label htmlFor="username">Name: </label>
+        {/* <label htmlFor="username">Name: </label> */}
+        <div className='Rcontainer1'>
+        <div className='Rcontainer2'>
         <input
-          id="username"
+          className="registerInput"
+          id="RegisterUsername"
           type="text"
           onChange={handleChange}
           value={input.username}
         />
+        </div>
         <br />
-        <br />
-        <label htmlFor="password">Password: </label>
+        
+        {/* <label htmlFor="password">Password: </label> */}
+        <div className='Rcontainer2'>
         <input
-          id="password"
+          className="registerInput"
+          id="registerPassword"
           name="password"
           onChange={handleChange}
           value={input.password}
-          
         />
+        </div>
+        </div>
         <br />
+        <button className='registerButton' type="submit" > Register</button>
         <br />
-        <button type="submit" > Register</button>
-        <button type="submit" > Back to Login</button>
+        <button className='registerButton' type="submit" > Back</button>
     </form>
-    
+  </section>  
   );
 }
 
