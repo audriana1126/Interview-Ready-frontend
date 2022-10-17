@@ -12,7 +12,7 @@ const Update = (props) => {
     const [user, setUser] = useState(null)
     const { id } = useParams()
     const navigate = useNavigate()
-    const URL = `${endpoint}user/${id}`
+    const URL = `${endpoint.url}user/${id}`
 // console.log('hello')
     // const getUser = async () => {
     //     console.log(URL)
@@ -75,9 +75,21 @@ const Update = (props) => {
     }
 
     const EditUser = () => {
-        localStorage.setItem('user', user)
-        setUserToken()
-        navigate("/profile")
+        localStorage.setItem('user',JSON.stringify(user))
+        //setUserToken('new-tok')
+        //navigate("/profile")
+        const context = {
+            headers: {
+              "Content-Type": 'Application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(user)
+          }
+        fetch(`${endpoint.url}user/${user.id}`, context)
+        .then(res=>res.json())
+        .then(res=>{
+            console.log('Edit response from backend', res)
+        })
         
     }
 
@@ -93,10 +105,13 @@ const Update = (props) => {
             const deletedUser = await response.json()
             // our destroy - findByIdAndDelete >> original document
             console.log(deletedUser)
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            window.location.reload()
             // navigate('/')
         } catch (err) {
             console.log(err)
-            navigate(`localhost:3000/`)
+            window.location.reload()
             // https://interview-ready.herokuapp.com/user/
         }
     }
@@ -129,7 +144,7 @@ const Update = (props) => {
     }
 
     return (
-    <Auth>
+    <Auth navigate={navigate}>
         <section className='updateSection'>
         
             {/* {editForm ?
@@ -201,3 +216,11 @@ const Update = (props) => {
 )}
 
 export default Update
+
+
+
+
+
+
+
+

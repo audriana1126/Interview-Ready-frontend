@@ -65,7 +65,7 @@ function LoginForm() {
         console.log(response)
         localStorage.setItem('token', response.token)
         localStorage.setItem('user', JSON.stringify(response.user))
-        navigate('/chat')
+        navigate('/profile')
       }else{
         setErrMsg(response.error)
         setTimeout(()=>setErrMsg(''), 3000)
