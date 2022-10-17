@@ -88,6 +88,6 @@ const RegisterForm = ({signUp}) => {
   </section>  
   );
 }
- 
+  
 export default RegisterForm;
 
