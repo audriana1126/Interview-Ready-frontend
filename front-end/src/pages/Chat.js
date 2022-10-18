@@ -60,15 +60,16 @@ function Chat () {
     //console.log('Message', msg)
     return (
         <Auth navigate={navigate}>
-            <div> 
+            <div > 
                 <h1>This is Chat</h1>
                 <div>{typing}</div>
+                <div className="chatInput">
                 <input
                   name="name"
                   type="text"
                   value={msg}
                   onChange={(e)=>onChange(e.target.value)}
-                />
+                /></div>
                 {/* <button onClick={logout}>Logout</button> */}
                 <button onClick={sendMsg}>Send</button>
                 <br /><br />

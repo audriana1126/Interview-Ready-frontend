@@ -28,7 +28,7 @@ function Career () {
             <div className="Career">
             
                 <h1 className='careerH1'>Choose Your Career</h1>
-                <button onClick={()=>navigate('/profile')}>Profile</button>
+                <button className='profileButton' onClick={()=>navigate('/profile')}>Profile</button>
                 <div className="careerButtons"> 
                 <button onClick={se}>Software Engineer</button>
                 </div>

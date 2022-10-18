@@ -8,6 +8,8 @@ function Home () {
 
     return (
         <div className='homePage'>
+          <div className="HPh1"><h1>Interview-Ready</h1></div>
+          <div className="HPh2"><h2>Boost your confidence the best way we know how</h2></div>
             {/* <img class="image1" src="https://i.imgur.com/c31ZUtp.png" /> */}
             <div className='bothLinks'>
               <Link to="/login" element={<LoginForm />} className='HPlink'>

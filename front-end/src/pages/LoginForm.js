@@ -101,6 +101,7 @@ function LoginForm() {
             type="text"
             value={user}
             placeholder='Username'
+            className="password"
             onChange={(e)=>setUser(e.target.value)}
             // value={formState.username}
           />

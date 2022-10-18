@@ -95,9 +95,10 @@ function Se () {
     //console.log('Message', msg)
     return (
         <Auth navigate={navigate}>
+          <section className="seChat">  
             <div style={{width: '100%'}}> 
-                <h1 style={{textAlign: "center", fontSize: "20px",}}>You've entered a chat room</h1>
-                <button onClick={()=>navigate("/career")}>Leave</button>
+                <h1 className='SEh1' style={{textAlign: "center", fontSize: "20px",}}>You've entered a chat room</h1>
+                <button className='seButton' onClick={()=>navigate("/career")}>Leave</button>
                 <div>{messageDisplay}</div>
                 {/* <div>
                     <div style={{width: "100%", backgroundColor: "blue"}}>
@@ -106,22 +107,28 @@ function Se () {
                 </div> */}
                 <br /><br />
                 <div>{typing}</div>
-                <div style={{ padding: "10px"}}>
+                    <div className='container3'>
+                    <div style={{ padding: "10px"}}>
                     <input
                     name="name"
                     type="text"
                     value={msg}
                     onChange={(e)=>onChange(e.target.value)}
-                    className="input"
+                    className="seInput"
                     // style={styles.input}
                     />
-                </div>
+                    </div>
+                    </div>
+                <br />
                 {/* <button onClick={logout}>Logout</button> */}
-                <button onClick={sendMsg}>Send</button>
+                <div className='container3'>
+                <button className='seSend' onClick={sendMsg}>Send</button>
+                </div>
                 <br /><br />
-
+                </div>
+          </section>
             
-            </div>
+            
         </Auth>
     )}
 

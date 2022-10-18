@@ -19,26 +19,26 @@ const RegisterForm = ({signUp}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('Submit attempted')
 
+  // const url = 'https://interview-ready.herokuapp.com/auth/register'
+  // const context = {
+  //   headers: {
+  //     "Content-type": 'Application/json'
+  //   },
+  //   method: "POST",
+  //   body: JSON.stringify(input)
+  // }
+  // fetch(url, context)
+  // .then(response=>response.json())
+  // .then(response=>{
+  //   console.log('back-end response',response)
+  //   localStorage.setItem('token', JSON.stringify(response))
+  //   navigate('/profile')
+  // })
+  // .catch(err=>console.log(err))
 
-  const url = 'https://interview-ready.herokuapp.com/auth/register'
-  const context = {
-    headers: {
-      "Content-type": 'Application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(input)
-  }
-  fetch(url, context)
-  .then(response=>response.json())
-  .then(response=>{
-    console.log('back-end response',response)
-    localStorage.setItem('token', JSON.stringify(response))
-    navigate('/profile')
-  })
-  .catch(err=>console.log(err))
-
-  setuserState(initialState);
+  // setuserState(initialState);
   };
     // const createdUserToken = await signUp(input)
 
@@ -51,6 +51,10 @@ const RegisterForm = ({signUp}) => {
   //   }
 	// 	setInput(initialState);
   // };
+  const goBack = e => {
+    e.preventDefault()
+    navigate('/')
+  }
   return (
     <section className='registerSection'>
       <form onSubmit={handleSubmit}>
@@ -77,13 +81,14 @@ const RegisterForm = ({signUp}) => {
           name="password"
           onChange={handleChange}
           value={input.password}
+
         />
         </div>
         </div>
         <br />
-        <button className='registerButton' type="submit" > Register</button>
+        <button className='registerButton' > Register</button>
         <br />
-        <button className='registerButton' type="submit" > Back</button>
+        <button className='registerButton' onClick={goBack}  > Back</button>
     </form>
   </section>  
   );
