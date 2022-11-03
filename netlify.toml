@@ -1,6 +1,0 @@
-[build]
-  command = "npm start"
-[[redirects]]
-  from = "/*"
-  to = "./front-end/index.js"
-  status = 200
