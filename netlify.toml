@@ -1,4 +1,4 @@
-[dev]
+[build]
   command = "npm start"
   port = 3000
 [[redirects]]
