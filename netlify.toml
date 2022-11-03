@@ -1,6 +1,5 @@
 [build]
-  command = "npm start"
-  port = 3000
+  command = "react-scripts build"
 [[redirects]]
   from = "/*"
   to = "./front-end/index.js"
