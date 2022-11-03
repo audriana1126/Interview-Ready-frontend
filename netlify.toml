@@ -1,3 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/index.js"
+  to = "./front-end/index.js"
+  status = 200
