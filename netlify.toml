@@ -1,4 +1,7 @@
+[build]
+  publish = "build/"
+  functions = './front-end/'
 [[redirects]]
   from = "/*"
-  to = "./front-end/index.js"
+  to = "/.netlify/front-end/index.js"
   status = 200
